@@ -13,7 +13,9 @@ export const useTimer = (maxTime:number) => {
   };
 
   const clearTimer = () => {
-    clearInterval(interval.current);
+    if (interval.current) {
+      clearInterval(interval.current);
+    }
   };
 
   return { time, startTimer, clearTimer };
