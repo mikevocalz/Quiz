@@ -12,12 +12,8 @@ type QuestionCardProps = {
 }
 
 export default function QuestionCard({ question}: QuestionCardProps) {
-  const [selectedOption, setSelectedOption] = useState(question.options[0]);
 
 
-  const handleOptionPress = (option: string) => {
-    setSelectedOption(option)
-  }
 
 
   return (
@@ -30,8 +26,6 @@ export default function QuestionCard({ question}: QuestionCardProps) {
           <AnswerOption
             key={option}
             option={option}
-            onPress={() => handleOptionPress(option)}
-            isSelected={option === selectedOption}
           />
         ))}
       </View>

@@ -1,11 +1,14 @@
 import './global.css';
 import QuizScreen from '~/app/QuizScreen';
 import { StatusBar } from 'expo-status-bar';
+import QuizProvider from '~/providers/QuizProvider';
 
 export default function App() {
   return (
     <>
-      <QuizScreen />
+      <QuizProvider>
+        <QuizScreen />
+      </QuizProvider>
       <StatusBar style="dark" />
     </>
   );

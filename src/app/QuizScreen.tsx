@@ -3,27 +3,22 @@ import QuestionCard from '../components/QuestionCard';
 import FontAwesome6 from '@expo/vector-icons/FontAwesome6'
 import questions from '../questions';
 import Card from '~/components/Card';
-import { useState } from 'react';
+import { useQuizContext } from '~/providers/QuizProvider';
+
 
 
 
 export default function QuizScreen() {
+const { question, questionIndex, handleNextPress, score, totalQuestions } = useQuizContext()
 
-const [questionIndex, setQuestionIndex] = useState(0);
-const question = questions[questionIndex];
 
-const handleNextPress = () => {
-  if (questionIndex < questions.length - 1) {
-    setQuestionIndex((currentIndex) => currentIndex + 1);
-  }
-}
 
   return (
     <SafeAreaView className="flex-1 bg-white w-full min-h-screen">
       <View className="flex-1 justify-between p-5">
         {/* Header */}
         <View>
-          <Text className="text-center text-[#005055]">Question {questionIndex + 1} /{questions.length}</Text>
+          <Text className="text-center text-[#005055]">Question {questionIndex + 1} /{totalQuestions}</Text>
         </View>
 
         {/* Body */}
@@ -34,8 +29,8 @@ const handleNextPress = () => {
         </View>
         ) : (
            <Card title="Quiz Completed">
-            <Text>Correct Answers: 3</Text>
-            <Text>Best Score: 2</Text>
+            <Text>Correct Answers: {score}/{totalQuestions}</Text>
+            <Text>Best Score: 10</Text>
            </Card>
         )}
 
