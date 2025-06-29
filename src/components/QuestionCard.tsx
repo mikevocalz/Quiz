@@ -1,7 +1,7 @@
 import { View } from 'react-native';
 import AnswerOption from './AnswerOption';
 import Card from './Card';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 
 type QuestionCardProps = {
   question: {

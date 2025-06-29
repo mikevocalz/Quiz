@@ -60,7 +60,13 @@ export default function QuizProvider({ children }: PropsWithChildren) {
       setScore((currScore) => currScore + 1);
     }
 
-    setQuestionIndex((currVal) => currVal + 1);
+    // Only increment if we haven't reached the end
+    if (questionIndex < questions.length - 1) {
+      setQuestionIndex((currVal) => currVal + 1);
+    } else {
+      // Mark as finished without incrementing further
+      setQuestionIndex(questions.length);
+    }
   };
 
   const saveBestStore = async (score:number) => {
